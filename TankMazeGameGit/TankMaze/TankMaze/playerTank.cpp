@@ -41,3 +41,34 @@ void playerTank::drawPlayer(SDL_Renderer *renderer)
 {
 	SDL_RenderCopy(renderer, texture, &windowRect, &playerPosition);
 }
+
+void playerTank::playerMove(const Uint8 *keyState)
+{
+	if (keyState[SDL_SCANCODE_D])
+	{
+		playerPosition.x += 5;
+	}
+	else if (keyState[SDL_SCANCODE_A])
+	{
+		playerPosition.x -= 5;
+		if(playerPosition.x < 0)
+		{
+			playerPosition.x = 0;
+		}
+	}
+	else if (keyState[SDL_SCANCODE_W])
+	{
+		playerPosition.y -= 5;
+	}
+
+	else if (keyState[SDL_SCANCODE_S])
+	{
+		playerPosition.y += 5;
+	}
+	else if (keyState[SDL_SCANCODE_D && SDL_SCANCODE_S])
+	{
+		playerPosition.x += 5;
+		playerPosition.y += 5;
+	}
+	
+}

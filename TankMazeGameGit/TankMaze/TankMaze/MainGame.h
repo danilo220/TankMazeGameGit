@@ -20,4 +20,5 @@ private:
 	int screenWidth = 1500;
 	void initSystems();
 	void gameRunning();
+	//const Uint8 *keyState;
 };

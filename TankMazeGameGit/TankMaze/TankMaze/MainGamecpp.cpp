@@ -41,6 +41,8 @@ void MainGame::initSystems()
 void MainGame::gameRunning()
 {
 	tanksEnemy tankEnemies(renderer, 0, 200, 50, 50, "enemyTank.png");
+	tanksEnemy tankEnemies2(renderer, 200, 300, 50, 50, "enemyTank.png");
+	tanksEnemy tankEnemies3(renderer, 600, 200, 50, 50, "enemyTank.png");
 	playerTank player(renderer, 0, 400, 50, 50, "playerTank.png");
 	bool running = true;
 	while (running)
@@ -54,11 +56,21 @@ void MainGame::gameRunning()
 		}
 		SDL_SetRenderDrawColor(renderer, 178, 174, 254, 1); //background 178, 174, 254, 1)
 		SDL_RenderClear(renderer); //clearrender
-
-		//tanks
-		tankEnemies.drawTanks(renderer);
+		//key state
+		keyState = SDL_GetKeyboardState(NULL);
 		//player
 		player.drawPlayer(renderer);
+		player.playerMove(keyState);
+
+		//tank 1
+		tankEnemies.drawTanks(renderer);
+		//tank 2
+		tankEnemies2.drawTanks(renderer);
+		//tank 3
+		tankEnemies3.drawTanks(renderer);
+
+
+		
 		
 
 		SDL_RenderPresent(renderer);
