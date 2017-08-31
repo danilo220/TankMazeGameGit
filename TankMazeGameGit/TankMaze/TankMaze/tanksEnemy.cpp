@@ -20,10 +20,10 @@ tanksEnemy::tanksEnemy(SDL_Renderer *renderer, int enemyX, int enemyY, int enemy
 	SDL_FreeSurface(enemyTanksBMP);
 
 	//creating tanks
-	tanksRectPosition.x = enemyX;
-	tanksRectPosition.y = enemyY;
-	tanksRectPosition.h = enemyH;
-	tanksRectPosition.w = enemyW;
+	enemyTanksRectPosition.x = enemyX;
+	enemyTanksRectPosition.y = enemyY;
+	enemyTanksRectPosition.h = enemyH;
+	enemyTanksRectPosition.w = enemyW;
 
 	//windowRect
 	windowRect.x = 0;
@@ -33,11 +33,12 @@ tanksEnemy::tanksEnemy(SDL_Renderer *renderer, int enemyX, int enemyY, int enemy
 }
 tanksEnemy::~tanksEnemy()
 {
+	SDL_DestroyTexture(texture);
 }
 
 void tanksEnemy::drawTanks(SDL_Renderer *renderer)
 {
 	//SDL_SetRenderDrawColor(renderer, 192, 57, 43, 1.0);
 	//SDL_RenderFillRect(renderer, &tanksRect);
-	SDL_RenderCopy(renderer, texture, &windowRect, &tanksRectPosition);
+	SDL_RenderCopy(renderer, texture, &windowRect, &enemyTanksRectPosition);
 }

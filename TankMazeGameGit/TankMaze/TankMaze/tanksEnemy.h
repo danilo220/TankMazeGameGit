@@ -8,8 +8,8 @@ public:
 	tanksEnemy(SDL_Renderer *renderer, int enemyX, int enemyY, int enemyW, int enemyH, std::string filePath);
 	~tanksEnemy();
 	void drawTanks(SDL_Renderer *renderer);
-	void move(const Uint8 *keyState);
-	SDL_Rect tanksRectPosition;
+	void enemyMove();
+	SDL_Rect enemyTanksRectPosition;
 private:
 	SDL_Texture *texture;
 	SDL_Rect windowRect;

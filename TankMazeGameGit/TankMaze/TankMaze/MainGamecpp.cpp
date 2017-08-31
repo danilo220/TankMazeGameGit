@@ -1,7 +1,8 @@
 #include "SDL.h"
+#include "SDL_image.h"
 #include "MainGame.h"
 #include "tanksEnemy.h"
-#include "SDL_image.h"
+#include "playerTank.h"
 #include <stdio.h>
 
 MainGame::MainGame()
@@ -39,7 +40,8 @@ void MainGame::initSystems()
 
 void MainGame::gameRunning()
 {
-	tanksEnemy tankEnemies(renderer, 0, 200, 50, 50, "playerTank.png");
+	tanksEnemy tankEnemies(renderer, 0, 200, 50, 50, "enemyTank.png");
+	playerTank player(renderer, 0, 400, 50, 50, "playerTank.png");
 	bool running = true;
 	while (running)
 	{
@@ -52,8 +54,13 @@ void MainGame::gameRunning()
 		}
 		SDL_SetRenderDrawColor(renderer, 178, 174, 254, 1); //background 178, 174, 254, 1)
 		SDL_RenderClear(renderer); //clearrender
+
 		//tanks
 		tankEnemies.drawTanks(renderer);
+		//player
+		player.drawPlayer(renderer);
+		
+
 		SDL_RenderPresent(renderer);
 	}
 	//SDL_Delay(3000);

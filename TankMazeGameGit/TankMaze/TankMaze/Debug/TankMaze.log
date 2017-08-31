@@ -1,3 +1,6 @@
-﻿  MainGamecpp.cpp
+﻿  tanksEnemy.cpp
+  playerTank.cpp
+  MainGamecpp.cpp
+  Generating Code...
   TankMaze.vcxproj -> C:\Users\Danilo\Desktop\TankMazeGame\TankMazeGameGit\TankMaze\Debug\TankMaze.exe
   TankMaze.vcxproj -> C:\Users\Danilo\Desktop\TankMazeGame\TankMazeGameGit\TankMaze\Debug\TankMaze.pdb (Partial PDB)
