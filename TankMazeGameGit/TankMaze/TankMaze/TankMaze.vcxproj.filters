@@ -21,7 +21,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tanks.cpp">
+    <ClCompile Include="tanksEnemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClInclude Include="MainGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tanks.h">
+    <ClInclude Include="tanksEnemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

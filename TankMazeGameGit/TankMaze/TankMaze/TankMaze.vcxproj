@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Danilo\Desktop\SDL Setup\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Danilo\Desktop\SDL Setup\SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Danilo\Desktop\SDL Setup\SDL2_image-2.0.1\include;C:\Users\Danilo\Desktop\SDL Setup\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Danilo\Desktop\SDL Setup\SDL2_image-2.0.1\lib\x86;C:\Users\Danilo\Desktop\SDL Setup\SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\Users\Danilo\Desktop\SDL Setup\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
@@ -82,12 +82,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Danilo\Desktop\SDL Setup\SDL2-2.0.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Danilo\Desktop\SDL Setup\SDL2_image-2.0.1\include;C:\Users\Danilo\Desktop\SDL Setup\SDL2-2.0.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>C:\Users\Danilo\Desktop\SDL Setup\SDL2-2.0.5\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Danilo\Desktop\SDL Setup\SDL2_image-2.0.1\lib\x86;C:\Users\Danilo\Desktop\SDL Setup\SDL2-2.0.5\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -132,11 +132,11 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGamecpp.cpp" />
-    <ClCompile Include="tanks.cpp" />
+    <ClCompile Include="tanksEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h" />
-    <ClInclude Include="tanks.h" />
+    <ClInclude Include="tanksEnemy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
