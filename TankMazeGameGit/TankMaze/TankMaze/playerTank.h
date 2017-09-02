@@ -3,6 +3,10 @@
 #include "SDL.h"
 #include <SDL_image.h>
 #include <iostream>
+#include <cmath>
+#include <stdio.h>
+#include <vector>
+#include "Bullet.h"
 class playerTank
 {
 public:
@@ -11,11 +15,28 @@ public:
 	void drawPlayer(SDL_Renderer *renderer);
 	void playerMove(const Uint8 *keyState);
 	SDL_Rect playerPosition;
+	void playerShot(const Uint8 *keyState, SDL_Renderer *renderer);
+	void moveBullet(SDL_Renderer *renderer);
+	//SDL_Rect playerBullet;
+	//void drawBullet(SDL_Renderer *renderer);
+	//Uint8 *SDL_GetKeyState(int *numkeys);
 
 private:
 	SDL_Texture *texture;
 	SDL_Rect windowRect;
 	SDL_Surface *playerBMP;
-
+	SDL_RendererFlip flipType;
+	SDL_Point* center = NULL;
+	double angle = 0.0;
+	bool d;
+	bool s;
+	bool a;
+	bool w;
+	bool dShoot = false;
+	bool sShoot = false;
+	bool aShoot = false;
+	bool wShoot = false;
+	bool shoot = false;
+	std::vector<Bullet> bulletVec;
 };
 

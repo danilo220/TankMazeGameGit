@@ -61,6 +61,9 @@ void MainGame::gameRunning()
 		//player
 		player.drawPlayer(renderer);
 		player.playerMove(keyState);
+		player.playerShot(keyState, renderer);
+		//player.moveBullet(renderer);
+		//player.drawBullet(renderer);
 
 		//tank 1
 		tankEnemies.drawTanks(renderer);

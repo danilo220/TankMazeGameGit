@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -74,7 +74,7 @@
     <LibraryPath>C:\Users\Danilo\Desktop\SDL Setup\SDL2_image-2.0.1\lib\x86;C:\Users\Danilo\Desktop\SDL Setup\SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\Danilo\Desktop\SDL Setup\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Danilo\Desktop\SDL Setup\SDL2_image-2.0.1\include;C:\Users\Danilo\Desktop\SDL Setup\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\Danilo\Desktop\SDL Setup\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -130,12 +130,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGamecpp.cpp" />
     <ClCompile Include="playerTank.cpp" />
     <ClCompile Include="tanksEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="playerTank.h" />
     <ClInclude Include="tanksEnemy.h" />
