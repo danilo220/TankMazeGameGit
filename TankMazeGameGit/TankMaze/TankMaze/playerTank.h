@@ -38,5 +38,9 @@ private:
 	bool wShoot = false;
 	bool shoot = false;
 	std::vector<Bullet> bulletVec;
+	bool spacePressed = false;
+	//Bullet newBullet(int f, int a);
+	//Bullet newBullet();
+
 };
 

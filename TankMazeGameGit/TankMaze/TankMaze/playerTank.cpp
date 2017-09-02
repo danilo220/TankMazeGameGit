@@ -171,7 +171,8 @@ void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer)
 	//}
 	//std::vector<Bullet> bulletVec;
 	/*Bullet newBullet(10, 10);*/
-	if (keyState[SDL_SCANCODE_SPACE])
+	/*shoot = false;*/
+	if (keyState[SDL_SCANCODE_SPACE] == SDL_PRESSED)
 	{
 		//playerBullet.x = playerPosition.x +10;
 		//playerBullet.y = playerPosition.y +20;
@@ -179,9 +180,11 @@ void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer)
 		//newBullet(10, 10);
 		/*newBullet.bulletPosition(playerPosition.x, playerPosition.y);*/
 		shoot = true;
+		//spacePressed = true;
+		//Bullet newBullet(10, 10);
 
 	}
-	if (shoot == true)
+	if (shoot == true && keyState[SDL_SCANCODE_SPACE] == SDL_RELEASED)
 	{
 		Bullet newBullet(10, 10);
 		newBullet.bulletPosition(playerPosition.x, playerPosition.y);
