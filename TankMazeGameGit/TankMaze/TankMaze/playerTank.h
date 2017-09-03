@@ -49,11 +49,18 @@ private:
 	std::vector<Bullet> bulletVecS;
 	std::vector<Bullet> bulletVecA;
 	std::vector<Bullet> bulletVecWD;
+	std::vector<Bullet> bulletVecSD;
+	std::vector<Bullet> bulletVecSA;
+	std::vector<Bullet> bulletVecWA;
+
 	bool spacePressed = false;
 	bool xPos = false;
 	bool yPos = false;
-	bool wdPos = false;
+	/*bool wdPos = false;*/
 	bool wdShoot = false;
+	bool sdShoot = false;
+	bool saShoot = false;
+	bool waShoot = false;
 	//Bullet newBullet(int f, int a);
 	//Bullet newBullet();
 

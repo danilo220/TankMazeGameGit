@@ -13,7 +13,7 @@ Bullet::~Bullet()
 {
 }
 
-void Bullet::bulletPosition(int bulletX, int bulletY, bool xPos, bool yPos, bool wdPos)
+void Bullet::bulletPosition(int bulletX, int bulletY, bool xPos, bool yPos)
 {
 	if (xPos)
 	{
@@ -80,5 +80,22 @@ void Bullet::bulletMoveWD(int speedWD)
 {
 	bulletRect.x += speedWD;
 	bulletRect.y -= speedWD;
+}
 
+void Bullet::bulletMoveSD(int speedSD)
+{
+	bulletRect.x += speedSD;
+	bulletRect.y += speedSD;
+}
+
+void Bullet::bulletMoveSA(int speedSA)
+{
+	bulletRect.x -= speedSA;
+	bulletRect.y += speedSA;
+}
+
+void Bullet::bulletMoveWA(int speedWA)
+{
+	bulletRect.x -= speedWA;
+	bulletRect.y -= speedWA;
 }
