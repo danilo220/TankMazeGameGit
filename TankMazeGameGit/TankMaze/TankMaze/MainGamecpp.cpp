@@ -44,6 +44,7 @@ void MainGame::gameRunning()
 	tanksEnemy tankEnemies2(renderer, 200, 300, 50, 50, "enemyTank.png");
 	tanksEnemy tankEnemies3(renderer, 600, 200, 50, 50, "enemyTank.png");
 	playerTank player(renderer, 0, 720, 50, 50, "playerTank.png");
+	//Bullet bullets(NULL, NULL);
 	bool running = true;
 	while (running)
 	{
@@ -60,7 +61,7 @@ void MainGame::gameRunning()
 		keyState = SDL_GetKeyboardState(NULL);
 		//player
 		player.drawPlayer(renderer);
-		player.playerMove(keyState, 10, 1);
+		player.playerMove(keyState, 3, 1);
 		player.playerShot(keyState, renderer);
 
 		//tank 1
@@ -70,6 +71,19 @@ void MainGame::gameRunning()
 		//tank 3
 		tankEnemies3.drawTanks(renderer);
 
+		//SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &player.playerPosition);
+		//if (collisionOne)
+		//{
+		//	//std::cout << "enemy killed" << std::endl;
+		//	tankEnemies.~tanksEnemy();
+		//}
+
+		//SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &bullets.bulletRect);
+		//if (collisionOne)
+		//{
+		//	//std::cout << "enemy killed" << std::endl;
+		//	tankEnemies.~tanksEnemy();
+		//}
 
 		
 		

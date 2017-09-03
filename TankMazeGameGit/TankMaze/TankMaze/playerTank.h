@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <vector>
 #include "Bullet.h"
+
 class playerTank
 {
 public:
@@ -49,6 +50,7 @@ private:
 	std::vector<Bullet> bulletVecSD;
 	std::vector<Bullet> bulletVecSA;
 	std::vector<Bullet> bulletVecWA;
+	/*Bullet newBulletW(5, 5);*/
 
 	bool spacePressed = false;
 	bool xPos = false;

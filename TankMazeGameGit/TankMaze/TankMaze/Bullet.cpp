@@ -6,6 +6,8 @@ Bullet::Bullet(int bulletH, int bulletW)
 {
 	bulletRect.h = bulletH;
 	bulletRect.w = bulletW;
+	//bulletRect.y;
+	//bulletRect.x;
 }
 
 

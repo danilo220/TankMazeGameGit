@@ -65,6 +65,7 @@ void playerTank::playerMove(const Uint8 *keyState, int normalMov, int diagonalMo
 		d = true;
 		dShoot = true;
 		xPos = true;
+		aShoot = wShoot = sShoot = wdShoot = sdShoot = waShoot = saShoot = false;
 	}
 	if (keyState[SDL_SCANCODE_A])
 	{
@@ -78,6 +79,7 @@ void playerTank::playerMove(const Uint8 *keyState, int normalMov, int diagonalMo
 		a = true;
 		aShoot = true;
 		xPos = true;
+		wShoot = dShoot = sShoot = wdShoot = sdShoot = waShoot = saShoot = false;
 	}
 	if (keyState[SDL_SCANCODE_W]) 
 	{
@@ -91,6 +93,8 @@ void playerTank::playerMove(const Uint8 *keyState, int normalMov, int diagonalMo
 		w = true;
 		wShoot = true;
 		yPos = true;
+		aShoot = dShoot = sShoot = wdShoot = sdShoot = waShoot = saShoot = false;
+
 	}
 
 	if (keyState[SDL_SCANCODE_S])
@@ -105,6 +109,8 @@ void playerTank::playerMove(const Uint8 *keyState, int normalMov, int diagonalMo
 		s = true;
 		sShoot = true;
 		yPos = true;
+		aShoot = wShoot = dShoot = wdShoot = sdShoot = waShoot = saShoot = false;
+
 	}
 
 	//diagonal moviment
@@ -116,6 +122,7 @@ void playerTank::playerMove(const Uint8 *keyState, int normalMov, int diagonalMo
 		sdShoot = true;
 		sShoot = false;
 		dShoot = false;
+		aShoot = wShoot = dShoot = sShoot = wdShoot = waShoot = saShoot = false;
 	}
 	if (s && a)
 	{
@@ -125,6 +132,7 @@ void playerTank::playerMove(const Uint8 *keyState, int normalMov, int diagonalMo
 		saShoot = true;
 		sShoot = false;
 		aShoot = false;
+		aShoot = wShoot = dShoot = sShoot = wdShoot = sdShoot = waShoot = false;
 	}
 	if (w && d)
 	{
@@ -135,6 +143,7 @@ void playerTank::playerMove(const Uint8 *keyState, int normalMov, int diagonalMo
 		wdShoot = true;
 		wShoot = false;
 		dShoot = false;
+		aShoot = wShoot = dShoot = sShoot = sdShoot = waShoot = saShoot = false;
 	}
 	if (w && a)
 	{
@@ -145,6 +154,7 @@ void playerTank::playerMove(const Uint8 *keyState, int normalMov, int diagonalMo
 		waShoot = true;
 		wShoot = false;
 		aShoot = false;
+		aShoot = wShoot = dShoot = sShoot = wdShoot = sdShoot = saShoot = false;
 	}
 }
 
@@ -225,47 +235,54 @@ void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer) //sho
 	for (int i = 0; i < bulletVecD.size(); i++)
 	{
 		bulletVecD[i].bulletDraw(renderer);
-		bulletVecD[i].bulletMoveD(3);
+		bulletVecD[i].bulletMoveD(5);
 	}
 
 	for (int k = 0; k < bulletVecW.size(); k++)
 	{
 		bulletVecW[k].bulletDraw(renderer);
-		bulletVecW[k].bulletMoveW(3);
+		bulletVecW[k].bulletMoveW(6);
 	}
 
 	for (int l = 0; l < bulletVecS.size(); l++)
 	{
 		bulletVecS[l].bulletDraw(renderer);
-		bulletVecS[l].bulletMoveS(3);
+		bulletVecS[l].bulletMoveS(6);
 	}
 	for (int n = 0; n < bulletVecA.size(); n++)
 	{
 		bulletVecA[n].bulletDraw(renderer);
-		bulletVecA[n].bulletMoveA(3);
+		bulletVecA[n].bulletMoveA(6);
 	}
 
 	for (int p = 0; p < bulletVecWD.size(); p++)
 	{
 		bulletVecWD[p].bulletDraw(renderer);
-		bulletVecWD[p].bulletMoveWD(3);
+		bulletVecWD[p].bulletMoveWD(4);
 	}
 
 	for (int sd = 0; sd < bulletVecSD.size(); sd++)
 	{
 		bulletVecSD[sd].bulletDraw(renderer);
-		bulletVecSD[sd].bulletMoveSD(3);
+		bulletVecSD[sd].bulletMoveSD(4);
 	}
 
 	for (int sa = 0; sa < bulletVecSA.size(); sa++)
 	{
 		bulletVecSA[sa].bulletDraw(renderer);
-		bulletVecSA[sa].bulletMoveSA(3);
+		bulletVecSA[sa].bulletMoveSA(4);
 	}
 
 	for (int wa = 0; wa < bulletVecWA.size(); wa++)
 	{
 		bulletVecWA[wa].bulletDraw(renderer);
-		bulletVecWA[wa].bulletMoveWA(3);
+		bulletVecWA[wa].bulletMoveWA(4);
 	}
+	///*tanksEnemy tankEnemies5(renderer, 0, 500, 50, 50, "enemyTank.png");*/
+	//SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies5.enemyTanksRectPosition, &newBulletW.);
+	//if (collisionOne)
+	//{
+	//	//std::cout << "enemy killed" << std::endl;
+	//	tankEnemies5.~tanksEnemy();
+	//}
 }
