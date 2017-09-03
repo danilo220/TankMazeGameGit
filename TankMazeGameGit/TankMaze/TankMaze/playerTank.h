@@ -13,13 +13,10 @@ public:
 	playerTank(SDL_Renderer *renderer, int enemyX, int enemyY, int enemyW, int enemyH, std::string filePath);
 	~playerTank();
 	void drawPlayer(SDL_Renderer *renderer);
-	void playerMove(const Uint8 *keyState);
+	void playerMove(const Uint8 *keyState, int normalMov, int diagonalMov);
 	SDL_Rect playerPosition;
 	void playerShot(const Uint8 *keyState, SDL_Renderer *renderer);
 	void moveBullet(SDL_Renderer *renderer);
-	//SDL_Rect playerBullet;
-	//void drawBullet(SDL_Renderer *renderer);
-	//Uint8 *SDL_GetKeyState(int *numkeys);
 
 private:
 	SDL_Texture *texture;
@@ -56,13 +53,9 @@ private:
 	bool spacePressed = false;
 	bool xPos = false;
 	bool yPos = false;
-	/*bool wdPos = false;*/
 	bool wdShoot = false;
 	bool sdShoot = false;
 	bool saShoot = false;
 	bool waShoot = false;
-	//Bullet newBullet(int f, int a);
-	//Bullet newBullet();
-
 };
 

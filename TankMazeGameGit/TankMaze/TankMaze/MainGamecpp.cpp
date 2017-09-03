@@ -43,7 +43,7 @@ void MainGame::gameRunning()
 	tanksEnemy tankEnemies(renderer, 0, 200, 50, 50, "enemyTank.png");
 	tanksEnemy tankEnemies2(renderer, 200, 300, 50, 50, "enemyTank.png");
 	tanksEnemy tankEnemies3(renderer, 600, 200, 50, 50, "enemyTank.png");
-	playerTank player(renderer, 0, 400, 50, 50, "playerTank.png");
+	playerTank player(renderer, 0, 720, 50, 50, "playerTank.png");
 	bool running = true;
 	while (running)
 	{
@@ -60,10 +60,8 @@ void MainGame::gameRunning()
 		keyState = SDL_GetKeyboardState(NULL);
 		//player
 		player.drawPlayer(renderer);
-		player.playerMove(keyState);
+		player.playerMove(keyState, 10, 1);
 		player.playerShot(keyState, renderer);
-		//player.moveBullet(renderer);
-		//player.drawBullet(renderer);
 
 		//tank 1
 		tankEnemies.drawTanks(renderer);

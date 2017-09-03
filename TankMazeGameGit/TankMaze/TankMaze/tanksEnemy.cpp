@@ -38,7 +38,5 @@ tanksEnemy::~tanksEnemy()
 
 void tanksEnemy::drawTanks(SDL_Renderer *renderer)
 {
-	//SDL_SetRenderDrawColor(renderer, 192, 57, 43, 1.0);
-	//SDL_RenderFillRect(renderer, &tanksRect);
 	SDL_RenderCopy(renderer, texture, &windowRect, &enemyTanksRectPosition);
 }

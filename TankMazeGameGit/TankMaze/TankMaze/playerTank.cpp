@@ -19,7 +19,7 @@ playerTank::playerTank(SDL_Renderer *renderer, int enemyX, int enemyY, int enemy
 	}
 	SDL_FreeSurface(playerBMP);
 
-	//creating tanks
+	//creating tank
 	playerPosition.x = enemyX;
 	playerPosition.y = enemyY;
 	playerPosition.h = enemyH;
@@ -30,19 +30,6 @@ playerTank::playerTank(SDL_Renderer *renderer, int enemyX, int enemyY, int enemy
 	windowRect.y = 0;
 	windowRect.h = 780;
 	windowRect.w = 1500;
-
-	//bullet
-	//playerBullet[5].x = playerPosition.x;
-	//playerBullet[5].y = playerPosition.y;
-	//playerBullet.x = 50;
-	//playerBullet.y = 50;
-	//playerBullet.w = playerBullet.h = 10;
-
-	//sShoot = false;
-	//dShoot = false;
-	//wShoot = false;
-	//aShoot = false;
-	/*std::vector<Bullet> bulletVec;*/
 }
 
 
@@ -56,18 +43,23 @@ void playerTank::drawPlayer(SDL_Renderer *renderer)
 	SDL_RenderCopyEx(renderer, texture, &windowRect, &playerPosition, angle, center, flipType);
 }
 
-void playerTank::playerMove(const Uint8 *keyState)
+void playerTank::playerMove(const Uint8 *keyState, int normalMov, int diagonalMov)
 {
+	//keep making boolean of the buttons pressed to false
 	d = false;
 	s = false;
 	a = false;
 	w = false;
 	aShoot = wShoot = dShoot = sShoot = wdShoot = sdShoot = waShoot = saShoot = false;
-	wShootPressed = false;
-	dShootPressed = false;
+
+	//moving player
 	if (keyState[SDL_SCANCODE_D])
 	{
-		playerPosition.x += 2;
+		playerPosition.x += normalMov;
+		if (playerPosition.x + playerPosition.w > 1500) //right wall collision
+		{
+			playerPosition.x = 1500 - playerPosition.w;
+		}
 		angle = -90;
 		flipType = SDL_FLIP_HORIZONTAL;
 		d = true;
@@ -76,8 +68,8 @@ void playerTank::playerMove(const Uint8 *keyState)
 	}
 	if (keyState[SDL_SCANCODE_A])
 	{
-		playerPosition.x -= 2;
-		if(playerPosition.x < 0)
+		playerPosition.x -= normalMov;
+		if(playerPosition.x < 0) //left wall colision
 		{
 			playerPosition.x = 0;
 		}
@@ -87,9 +79,13 @@ void playerTank::playerMove(const Uint8 *keyState)
 		aShoot = true;
 		xPos = true;
 	}
-	if (keyState[SDL_SCANCODE_W])
+	if (keyState[SDL_SCANCODE_W]) 
 	{
-		playerPosition.y -= 2;
+		playerPosition.y -= normalMov;
+		if (playerPosition.y + playerPosition.h < 50) //ceiling collision
+		{
+			playerPosition.y =  50 - playerPosition.h;
+		}
 		angle = 0.0;
 		flipType = SDL_FLIP_VERTICAL;
 		w = true;
@@ -99,18 +95,24 @@ void playerTank::playerMove(const Uint8 *keyState)
 
 	if (keyState[SDL_SCANCODE_S])
 	{
-		playerPosition.y += 2;
+		playerPosition.y += normalMov;
+		if (playerPosition.y + playerPosition.h > 779) //floor colission
+		{
+			playerPosition.y = 779 - playerPosition.h;
+		}
 		angle = 0.0;
 		flipType = SDL_FLIP_NONE;
 		s = true;
 		sShoot = true;
 		yPos = true;
 	}
+
+	//diagonal moviment
 	if (s && d)
 	{
 		angle = -32;
-		playerPosition.y -= 1;
-		playerPosition.x -= 1;
+		playerPosition.y -= diagonalMov;
+		playerPosition.x -= diagonalMov;
 		sdShoot = true;
 		sShoot = false;
 		dShoot = false;
@@ -118,8 +120,8 @@ void playerTank::playerMove(const Uint8 *keyState)
 	if (s && a)
 	{
 		angle = 32;
-		playerPosition.y -= 1;
-		playerPosition.x += 1;
+		playerPosition.y -= diagonalMov;
+		playerPosition.x += diagonalMov;
 		saShoot = true;
 		sShoot = false;
 		aShoot = false;
@@ -128,9 +130,8 @@ void playerTank::playerMove(const Uint8 *keyState)
 	{
 		flipType = SDL_FLIP_HORIZONTAL;
 		angle = -132;
-		playerPosition.y += 1;
-		playerPosition.x -= 1;
-		/*wdPos = true;*/
+		playerPosition.y += diagonalMov;
+		playerPosition.x -= diagonalMov;
 		wdShoot = true;
 		wShoot = false;
 		dShoot = false;
@@ -139,33 +140,22 @@ void playerTank::playerMove(const Uint8 *keyState)
 	{
 		flipType = SDL_FLIP_HORIZONTAL;
 		angle = 132;
-		playerPosition.y += 1;
-		playerPosition.x += 1;
+		playerPosition.y += diagonalMov;
+		playerPosition.x += diagonalMov;
 		waShoot = true;
 		wShoot = false;
 		aShoot = false;
 	}
-	//if (dShoot)
-	//{
-	//	dShootPressed = true;
-	//	wShootPressed = false;
-	//}
-	//if (wShoot)
-	//{
-	//	dShootPressed = false;
-	//	wShootPressed = true;
-	//}
 }
 
-void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer)
+void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer) //shooting with space
 {
 	if (keyState[SDL_SCANCODE_SPACE] == SDL_PRESSED)
 	{
-		/*aShoot = wShoot = dShoot = sShoot = false;*/
 		shoot = true;
 
 	}
-	if (shoot == true && keyState[SDL_SCANCODE_SPACE] == SDL_RELEASED)
+	if (shoot == true && keyState[SDL_SCANCODE_SPACE] == SDL_RELEASED) //make new bullets for each direction the player is facing
 	{
 		if (dShoot)
 		{
@@ -198,7 +188,8 @@ void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer)
 			bulletVecS.push_back(newBulletS);
 			shoot = false;
 		}
-		
+
+		//diagonal shooting
 		if (wdShoot)
 		{
 			Bullet newBulletWD(10, 10);
@@ -229,32 +220,18 @@ void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer)
 			bulletVecWA.push_back(newBulletWA);
 			shoot = false;
 		}
-
-		//Bullet newBullet(10, 10);
-		//newBullet.bulletPosition(playerPosition.x, playerPosition.y);
-		//bulletVec.push_back(newBullet);
-		//shoot = false;
 	}
+	//moving the bullets across the screen 
 	for (int i = 0; i < bulletVecD.size(); i++)
 	{
 		bulletVecD[i].bulletDraw(renderer);
 		bulletVecD[i].bulletMoveD(3);
-		//dShoot = false;
-		//wShoot = false;
-		/*bulletVec[i].bulletMove(3, aShoot, wShoot, dShoot, sShoot);*/
-		/*bulletVec[i].bulletMove(3, aShoot, wShootPressed, dShootPressed, sShoot);*/
-		/*aShoot = wShoot = dShoot = sShoot = false;*/
 	}
 
 	for (int k = 0; k < bulletVecW.size(); k++)
 	{
 		bulletVecW[k].bulletDraw(renderer);
 		bulletVecW[k].bulletMoveW(3);
-		//dShoot = false;
-		//wShoot = false;
-		/*bulletVec[i].bulletMove(3, aShoot, wShoot, dShoot, sShoot);*/
-		/*bulletVec[i].bulletMove(3, aShoot, wShootPressed, dShootPressed, sShoot);*/
-		/*aShoot = wShoot = dShoot = sShoot = false;*/
 	}
 
 	for (int l = 0; l < bulletVecS.size(); l++)
@@ -291,7 +268,4 @@ void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer)
 		bulletVecWA[wa].bulletDraw(renderer);
 		bulletVecWA[wa].bulletMoveWA(3);
 	}
-	//dShoot = false;
-	//wShoot = false;
-	/*aShoot = wShoot = dShoot = sShoot = false;*/
 }
