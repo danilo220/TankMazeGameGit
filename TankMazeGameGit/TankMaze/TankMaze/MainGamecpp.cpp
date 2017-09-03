@@ -71,43 +71,49 @@ void MainGame::gameRunning()
 		//tank 3
 		tankEnemies3.drawTanks(renderer);
 
-		//SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &player.playerPosition);
-		//if (collisionOne)
-		//{
-		//	//std::cout << "enemy killed" << std::endl;
-		//	tankEnemies.~tanksEnemy();
-		//}
-
-		//SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &bullets.bulletRect);
-		//if (collisionOne)
-		//{
-		//	//std::cout << "enemy killed" << std::endl;
-		//	tankEnemies.~tanksEnemy();
-		//}
-
-		for (int o = 0; o < player.bulletVecW.size(); o++)
+		for (int wInt = 0; wInt < player.bulletVecW.size(); wInt++) //W collision
 		{
-			SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &player.bulletVecW.at(o).bulletRect);
+			SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &player.bulletVecW.at(wInt).bulletRect);
 			if (collisionOne)
 			{
 				//std::cout << "enemy killed" << std::endl;
 				tankEnemies.~tanksEnemy();
 			}
-
+			SDL_bool collisionTwo = SDL_HasIntersection(&tankEnemies2.enemyTanksRectPosition, &player.bulletVecW.at(wInt).bulletRect);
+			if (collisionTwo)
+			{
+				//std::cout << "enemy killed" << std::endl;
+				tankEnemies2.~tanksEnemy();
+			}
+			SDL_bool collisionThree = SDL_HasIntersection(&tankEnemies3.enemyTanksRectPosition, &player.bulletVecW.at(wInt).bulletRect);
+			if (collisionThree)
+			{
+				//std::cout << "enemy killed" << std::endl;
+				tankEnemies3.~tanksEnemy();
+			}
 		}
-		//SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &player.bulletVecW.at(1).bulletRect);
-		//if (collisionOne)
-		//{
-		//	//std::cout << "enemy killed" << std::endl;
-		//	tankEnemies.~tanksEnemy();
-		//}
-		
-		//SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &player.;
-		//if (collisionOne)
-		//{
-		//	//std::cout << "enemy killed" << std::endl;
-		//	tankEnemies.~tanksEnemy();
-		//}
+
+		for (int waInt = 0; waInt < player.bulletVecWA.size(); waInt++) //WA collision
+		{
+			SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &player.bulletVecWA.at(waInt).bulletRect);
+			if (collisionOne)
+			{
+				//std::cout << "enemy killed" << std::endl;
+				tankEnemies.~tanksEnemy();
+			}
+			SDL_bool collisionTwo = SDL_HasIntersection(&tankEnemies2.enemyTanksRectPosition, &player.bulletVecWA.at(waInt).bulletRect);
+			if (collisionTwo)
+			{
+				//std::cout << "enemy killed" << std::endl;
+				tankEnemies2.~tanksEnemy();
+			}
+			SDL_bool collisionThree = SDL_HasIntersection(&tankEnemies3.enemyTanksRectPosition, &player.bulletVecWA.at(waInt).bulletRect);
+			if (collisionThree)
+			{
+				//std::cout << "enemy killed" << std::endl;
+				tankEnemies3.~tanksEnemy();
+			}
+		}
 
 		SDL_RenderPresent(renderer);
 	}
