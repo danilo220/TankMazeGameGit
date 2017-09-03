@@ -85,8 +85,29 @@ void MainGame::gameRunning()
 		//	tankEnemies.~tanksEnemy();
 		//}
 
+		for (int o = 0; o < player.bulletVecW.size(); o++)
+		{
+			SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &player.bulletVecW.at(o).bulletRect);
+			if (collisionOne)
+			{
+				//std::cout << "enemy killed" << std::endl;
+				tankEnemies.~tanksEnemy();
+			}
+
+		}
+		//SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &player.bulletVecW.at(1).bulletRect);
+		//if (collisionOne)
+		//{
+		//	//std::cout << "enemy killed" << std::endl;
+		//	tankEnemies.~tanksEnemy();
+		//}
 		
-		
+		//SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &player.;
+		//if (collisionOne)
+		//{
+		//	//std::cout << "enemy killed" << std::endl;
+		//	tankEnemies.~tanksEnemy();
+		//}
 
 		SDL_RenderPresent(renderer);
 	}

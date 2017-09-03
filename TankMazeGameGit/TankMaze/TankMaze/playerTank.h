@@ -18,6 +18,14 @@ public:
 	SDL_Rect playerPosition;
 	void playerShot(const Uint8 *keyState, SDL_Renderer *renderer);
 	void moveBullet(SDL_Renderer *renderer);
+	std::vector<Bullet> bulletVecD;
+	std::vector<Bullet> bulletVecW;
+	std::vector<Bullet> bulletVecS;
+	std::vector<Bullet> bulletVecA;
+	std::vector<Bullet> bulletVecWD;
+	std::vector<Bullet> bulletVecSD;
+	std::vector<Bullet> bulletVecSA;
+	std::vector<Bullet> bulletVecWA;
 
 private:
 	SDL_Texture *texture;
@@ -42,15 +50,8 @@ private:
 	bool shoot;
 	bool wShootPressed;
 	bool dShootPressed;
-	std::vector<Bullet> bulletVecD;
-	std::vector<Bullet> bulletVecW;
-	std::vector<Bullet> bulletVecS;
-	std::vector<Bullet> bulletVecA;
-	std::vector<Bullet> bulletVecWD;
-	std::vector<Bullet> bulletVecSD;
-	std::vector<Bullet> bulletVecSA;
-	std::vector<Bullet> bulletVecWA;
 	/*Bullet newBulletW(5, 5);*/
+	/*Bullet newOnek(20, 20);*/
 
 	bool spacePressed = false;
 	bool xPos = false;

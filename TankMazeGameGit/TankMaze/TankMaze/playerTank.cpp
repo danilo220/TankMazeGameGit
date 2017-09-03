@@ -30,6 +30,7 @@ playerTank::playerTank(SDL_Renderer *renderer, int enemyX, int enemyY, int enemy
 	windowRect.y = 0;
 	windowRect.h = 780;
 	windowRect.w = 1500;
+	Bullet newOnek(20, 20);
 }
 
 
@@ -279,10 +280,11 @@ void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer) //sho
 		bulletVecWA[wa].bulletMoveWA(4);
 	}
 	///*tanksEnemy tankEnemies5(renderer, 0, 500, 50, 50, "enemyTank.png");*/
-	//SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies5.enemyTanksRectPosition, &newBulletW.);
+	//SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies5.enemyTanksRectPosition, &bulletVecW.at(1).bulletRect);
 	//if (collisionOne)
 	//{
 	//	//std::cout << "enemy killed" << std::endl;
 	//	tankEnemies5.~tanksEnemy();
 	//}
+	/*bulletVecW.at(1).;*/
 }
