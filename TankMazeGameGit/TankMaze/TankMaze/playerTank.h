@@ -49,6 +49,8 @@ private:
 	std::vector<Bullet> bulletVecS;
 	std::vector<Bullet> bulletVecA;
 	bool spacePressed = false;
+	bool xPos = false;
+	bool yPos = false;
 	//Bullet newBullet(int f, int a);
 	//Bullet newBullet();
 

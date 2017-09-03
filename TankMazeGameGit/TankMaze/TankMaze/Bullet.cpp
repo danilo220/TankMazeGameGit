@@ -13,10 +13,20 @@ Bullet::~Bullet()
 {
 }
 
-void Bullet::bulletPosition(int bulletX, int bulletY)
+void Bullet::bulletPosition(int bulletX, int bulletY, bool xPos, bool yPos)
 {
-	bulletRect.x = bulletX;
-	bulletRect.y = bulletY;
+	if (xPos)
+	{
+		bulletRect.x = bulletX + 10;
+		bulletRect.y = bulletY + 20;
+	}
+	if (yPos)
+	{
+		bulletRect.x = bulletX + 20;
+		bulletRect.y = bulletY + 20;
+	}
+	//bulletRect.x = bulletX;
+	//bulletRect.y = bulletY;
 }
 void Bullet::bulletDraw(SDL_Renderer *renderer)
 {
