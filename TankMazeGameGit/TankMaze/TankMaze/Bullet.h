@@ -8,7 +8,12 @@ public:
 	~Bullet();
 	void bulletPosition(int bulletX, int bulletY);
 	void bulletDraw(SDL_Renderer *renderer);
-	void bulletMove(int speedBullet);
+	void bulletMove(int speedBullet, bool a, bool w, bool d, bool s);
 	SDL_Rect bulletRect;
+	void bulletMoveW(int speedW);
+	void bulletMoveD(int speedD);
+	void bulletMoveA(int speedA);
+	void bulletMoveS(int speedS);
+	//d = w = false;
 };
 

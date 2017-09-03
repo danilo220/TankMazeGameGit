@@ -62,6 +62,9 @@ void playerTank::playerMove(const Uint8 *keyState)
 	s = false;
 	a = false;
 	w = false;
+	aShoot = wShoot = dShoot = sShoot = false;
+	wShootPressed = false;
+	dShootPressed = false;
 	if (keyState[SDL_SCANCODE_D])
 	{
 		playerPosition.x += 2;
@@ -125,101 +128,98 @@ void playerTank::playerMove(const Uint8 *keyState)
 		playerPosition.y += 1;
 		playerPosition.x += 1;
 	}
+	if (dShoot)
+	{
+		dShootPressed = true;
+		wShootPressed = false;
+	}
+	if (wShoot)
+	{
+		dShootPressed = false;
+		wShootPressed = true;
+	}
 }
 
 void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer)
 {
-	//if (keyState[SDL_SCANCODE_SPACE])
-	//{
-	//	playerBullet.x = playerPosition.x +10;
-	//	playerBullet.y = playerPosition.y +20;
-	//	//playerBullet.x += 5;
-	//	shoot = true;
-	//}
-	//if (shoot)
-	//{
-	//	if (aShoot)
-	//	{
-	//		//a = true;
-	//		playerBullet.x -= 5;
-	//		//aShoot = false;
-	//	}
-
-	//	if (dShoot)
-	//	{
-	//		//d = true;
-	//		playerBullet.x += 5;
-	//		//dShoot = false;
-	//	}
-
-	//	if (wShoot)
-	//	{
-	//		playerBullet.y -= 5;
-	//		//wShoot = false;
-	//	}
-
-	//	if (sShoot)
-	//	{
-	//		playerBullet.y += 5;
-	//		//sShoot = false;
-	//	}
-	//	//playerBullet.x += 5;
-	//	//sShoot = false;
-	//	//dShoot = false;
-	//	//wShoot = false;
-	//	//aShoot = false;
-	//}
-	//std::vector<Bullet> bulletVec;
-	/*Bullet newBullet(10, 10);*/
-	/*shoot = false;*/
 	if (keyState[SDL_SCANCODE_SPACE] == SDL_PRESSED)
 	{
-		//playerBullet.x = playerPosition.x +10;
-		//playerBullet.y = playerPosition.y +20;
-		////playerBullet.x += 5;
-		//newBullet(10, 10);
-		/*newBullet.bulletPosition(playerPosition.x, playerPosition.y);*/
+		/*aShoot = wShoot = dShoot = sShoot = false;*/
 		shoot = true;
-		//spacePressed = true;
-		//Bullet newBullet(10, 10);
 
 	}
 	if (shoot == true && keyState[SDL_SCANCODE_SPACE] == SDL_RELEASED)
 	{
-		Bullet newBullet(10, 10);
-		newBullet.bulletPosition(playerPosition.x, playerPosition.y);
-		bulletVec.push_back(newBullet);
-		//for (int i = 0; i < bulletVec.size(); i++)
-		//{
-		//	bulletVec[i].bulletDraw(renderer);
-		//	bulletVec[i].bulletMove(3);
-		//}
-		shoot = false;
+		if (dShoot)
+		{
+			
+			Bullet newBulletD(10, 10);
+			newBulletD.bulletPosition(playerPosition.x, playerPosition.y);
+			bulletVecD.push_back(newBulletD);
+			shoot = false;
+		}
+		if (wShoot)
+		{
+
+			Bullet newBulletW(10, 10);
+			newBulletW.bulletPosition(playerPosition.x, playerPosition.y);
+			bulletVecW.push_back(newBulletW);
+			shoot = false;
+		}
+		if (aShoot)
+		{
+			Bullet newBulletA(10, 10);
+			newBulletA.bulletPosition(playerPosition.x, playerPosition.y);
+			bulletVecA.push_back(newBulletA);
+			shoot = false;
+		}
+
+		if (sShoot)
+		{
+			Bullet newBulletS(10, 10);
+			newBulletS.bulletPosition(playerPosition.x, playerPosition.y);
+			bulletVecS.push_back(newBulletS);
+			shoot = false;
+		}
+
+		//Bullet newBullet(10, 10);
+		//newBullet.bulletPosition(playerPosition.x, playerPosition.y);
+		//bulletVec.push_back(newBullet);
+		//shoot = false;
 	}
-	for (int i = 0; i < bulletVec.size(); i++)
+	for (int i = 0; i < bulletVecD.size(); i++)
 	{
-		bulletVec[i].bulletDraw(renderer);
-		bulletVec[i].bulletMove(3);
+		bulletVecD[i].bulletDraw(renderer);
+		bulletVecD[i].bulletMoveD(3);
+		//dShoot = false;
+		//wShoot = false;
+		/*bulletVec[i].bulletMove(3, aShoot, wShoot, dShoot, sShoot);*/
+		/*bulletVec[i].bulletMove(3, aShoot, wShootPressed, dShootPressed, sShoot);*/
+		/*aShoot = wShoot = dShoot = sShoot = false;*/
 	}
+
+	for (int k = 0; k < bulletVecW.size(); k++)
+	{
+		bulletVecW[k].bulletDraw(renderer);
+		bulletVecW[k].bulletMoveW(3);
+		//dShoot = false;
+		//wShoot = false;
+		/*bulletVec[i].bulletMove(3, aShoot, wShoot, dShoot, sShoot);*/
+		/*bulletVec[i].bulletMove(3, aShoot, wShootPressed, dShootPressed, sShoot);*/
+		/*aShoot = wShoot = dShoot = sShoot = false;*/
+	}
+
+	for (int l = 0; l < bulletVecS.size(); l++)
+	{
+		bulletVecS[l].bulletDraw(renderer);
+		bulletVecS[l].bulletMoveS(3);
+	}
+	for (int n = 0; n < bulletVecA.size(); n++)
+	{
+		bulletVecA[n].bulletDraw(renderer);
+		bulletVecA[n].bulletMoveA(3);
+	}
+	//dShoot = false;
+	//wShoot = false;
+	/*aShoot = wShoot = dShoot = sShoot = false;*/
 }
-//void playerTank::moveBullet(SDL_Renderer *renderer)
-//{
-//	std::vector<Bullet> bulletVec;
-//	if (shoot)
-//	{
-//		Bullet newBullet(10, 10);
-//		newBullet.bulletPosition(playerPosition.x, playerPosition.y);
-//		bulletVec.push_back(newBullet);
-//		shoot = false;
-//	}
-//	for (int i = 0; i < bulletVec.size(); i++)
-//	{
-//		bulletVec[i].bulletDraw(renderer);
-//		bulletVec[i].bulletMove(3);
-//	}
-//}
-//void playerTank::drawBullet(SDL_Renderer *renderer)
-//{
-//	SDL_SetRenderDrawColor(renderer, 0, 162, 232, 1.0);
-//	SDL_RenderFillRect(renderer, &playerBullet);
-//}

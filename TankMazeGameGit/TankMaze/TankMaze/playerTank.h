@@ -36,8 +36,18 @@ private:
 	bool sShoot = false;
 	bool aShoot = false;
 	bool wShoot = false;
-	bool shoot = false;
-	std::vector<Bullet> bulletVec;
+	/*bool shoot = false;*/
+	//bool dShoot;
+	//bool sShoot;
+	//bool aShoot;
+	//bool wShoot;
+	bool shoot;
+	bool wShootPressed;
+	bool dShootPressed;
+	std::vector<Bullet> bulletVecD;
+	std::vector<Bullet> bulletVecW;
+	std::vector<Bullet> bulletVecS;
+	std::vector<Bullet> bulletVecA;
 	bool spacePressed = false;
 	//Bullet newBullet(int f, int a);
 	//Bullet newBullet();
