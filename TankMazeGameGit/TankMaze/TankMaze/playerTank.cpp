@@ -236,7 +236,7 @@ void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer) //sho
 	for (int i = 0; i < bulletVecD.size(); i++)
 	{
 		bulletVecD[i].bulletDraw(renderer);
-		bulletVecD[i].bulletMoveD(5);
+		bulletVecD[i].bulletMoveD(6);
 	}
 
 	for (int k = 0; k < bulletVecW.size(); k++)
