@@ -62,7 +62,7 @@ void playerTank::playerMove(const Uint8 *keyState)
 	s = false;
 	a = false;
 	w = false;
-	aShoot = wShoot = dShoot = sShoot = false;
+	aShoot = wShoot = dShoot = sShoot = wdShoot = false;
 	wShootPressed = false;
 	dShootPressed = false;
 	if (keyState[SDL_SCANCODE_D])
@@ -85,6 +85,7 @@ void playerTank::playerMove(const Uint8 *keyState)
 		flipType = SDL_FLIP_HORIZONTAL;
 		a = true;
 		aShoot = true;
+		xPos = true;
 	}
 	if (keyState[SDL_SCANCODE_W])
 	{
@@ -103,6 +104,7 @@ void playerTank::playerMove(const Uint8 *keyState)
 		flipType = SDL_FLIP_NONE;
 		s = true;
 		sShoot = true;
+		yPos = true;
 	}
 	if (s && d)
 	{
@@ -122,6 +124,10 @@ void playerTank::playerMove(const Uint8 *keyState)
 		angle = -132;
 		playerPosition.y += 1;
 		playerPosition.x -= 1;
+		wdPos = true;
+		wdShoot = true;
+		wShoot = false;
+		dShoot = false;
 	}
 	if (w && a)
 	{
@@ -156,7 +162,7 @@ void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer)
 		{
 			
 			Bullet newBulletD(10, 10);
-			newBulletD.bulletPosition(playerPosition.x, playerPosition.y, xPos, yPos);
+			newBulletD.bulletPosition(playerPosition.x, playerPosition.y, xPos, yPos, wdPos);
 			bulletVecD.push_back(newBulletD);
 			shoot = false;
 		}
@@ -164,14 +170,14 @@ void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer)
 		{
 
 			Bullet newBulletW(10, 10);
-			newBulletW.bulletPosition(playerPosition.x, playerPosition.y, xPos, yPos);
+			newBulletW.bulletPosition(playerPosition.x, playerPosition.y, xPos, yPos, wdPos);
 			bulletVecW.push_back(newBulletW);
 			shoot = false;
 		}
 		if (aShoot)
 		{
 			Bullet newBulletA(10, 10);
-			newBulletA.bulletPosition(playerPosition.x, playerPosition.y, xPos, yPos);
+			newBulletA.bulletPosition(playerPosition.x, playerPosition.y, xPos, yPos, wdPos);
 			bulletVecA.push_back(newBulletA);
 			shoot = false;
 		}
@@ -179,8 +185,16 @@ void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer)
 		if (sShoot)
 		{
 			Bullet newBulletS(10, 10);
-			newBulletS.bulletPosition(playerPosition.x, playerPosition.y, xPos, yPos);
+			newBulletS.bulletPosition(playerPosition.x, playerPosition.y, xPos, yPos, wdPos);
 			bulletVecS.push_back(newBulletS);
+			shoot = false;
+		}
+		
+		if (wdShoot)
+		{
+			Bullet newBulletWD(10, 10);
+			newBulletWD.bulletPosition(playerPosition.x, playerPosition.y, xPos, yPos, wdPos);
+			bulletVecWD.push_back(newBulletWD);
 			shoot = false;
 		}
 
@@ -220,6 +234,12 @@ void playerTank::playerShot(const Uint8 *keyState, SDL_Renderer *renderer)
 	{
 		bulletVecA[n].bulletDraw(renderer);
 		bulletVecA[n].bulletMoveA(3);
+	}
+
+	for (int p = 0; p < bulletVecWD.size(); p++)
+	{
+		bulletVecWD[p].bulletDraw(renderer);
+		bulletVecWD[p].bulletMoveWD(3);
 	}
 	//dShoot = false;
 	//wShoot = false;

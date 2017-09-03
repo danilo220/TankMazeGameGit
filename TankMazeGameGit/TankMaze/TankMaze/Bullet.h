@@ -6,7 +6,7 @@ class Bullet
 public:
 	Bullet(int bulletH, int bulletW);
 	~Bullet();
-	void bulletPosition(int bulletX, int bulletY, bool xPos, bool yPos);
+	void bulletPosition(int bulletX, int bulletY, bool xPos, bool yPos, bool wdPos);
 	void bulletDraw(SDL_Renderer *renderer);
 	void bulletMove(int speedBullet, bool a, bool w, bool d, bool s);
 	SDL_Rect bulletRect;
@@ -14,6 +14,7 @@ public:
 	void bulletMoveD(int speedD);
 	void bulletMoveA(int speedA);
 	void bulletMoveS(int speedS);
+	void bulletMoveWD(int speedWD);
 	//d = w = false;
 };
 

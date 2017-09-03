@@ -1,12 +1,4 @@
-﻿  playerTank.cpp
-c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\playertank.cpp(192): warning C4018: '<': signed/unsigned mismatch
-c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\playertank.cpp(203): warning C4018: '<': signed/unsigned mismatch
-c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\playertank.cpp(214): warning C4018: '<': signed/unsigned mismatch
-c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\playertank.cpp(219): warning C4018: '<': signed/unsigned mismatch
-  Bullet.cpp
-c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\bullet.cpp(33): warning C4244: 'argument': conversion from 'double' to 'Uint8', possible loss of data
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  MainGamecpp.cpp
+﻿  Bullet.cpp
+c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\bullet.cpp(39): warning C4244: 'argument': conversion from 'double' to 'Uint8', possible loss of data
   TankMaze.vcxproj -> C:\Users\Danilo\Desktop\TankMazeGame\TankMazeGameGit\TankMaze\Debug\TankMaze.exe
   TankMaze.vcxproj -> C:\Users\Danilo\Desktop\TankMazeGame\TankMazeGameGit\TankMaze\Debug\TankMaze.pdb (Partial PDB)
