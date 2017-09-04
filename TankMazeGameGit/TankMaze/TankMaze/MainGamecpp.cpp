@@ -1,9 +1,4 @@
-#include "SDL.h"
-#include "SDL_image.h"
 #include "MainGame.h"
-#include "tanksEnemy.h"
-#include "playerTank.h"
-#include <stdio.h>
 
 MainGame::MainGame()
 {
@@ -51,6 +46,10 @@ void MainGame::gameRunning()
 
 	//player
 	playerTank player(renderer, 0, 720, 50, 50, "playerTank.png");
+
+	//platform
+	Platform platform(renderer, 0, 600, 10, 900); //SDL_Renderer *renderer, int platX, int platY, int platH, int platW
+	Platform platform2(renderer, 0, 200, 10, 900);
 	//Bullet bullets(NULL, NULL);
 	bool running = true;
 	while (running)
@@ -79,7 +78,9 @@ void MainGame::gameRunning()
 		tankEnemies5.drawTanks(renderer);
 		tankEnemies6.drawTanks(renderer);
 
-
+		//draw platform
+		platform.platDraw(renderer);
+		platform2.platDraw(renderer);
 		//collision
 		//W collision
 		for (int i = 0; i < player.bulletVecW.size(); i++) 

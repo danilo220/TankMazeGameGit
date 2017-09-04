@@ -133,12 +133,14 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainGamecpp.cpp" />
+    <ClCompile Include="Platform.cpp" />
     <ClCompile Include="playerTank.cpp" />
     <ClCompile Include="tanksEnemy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Platform.h" />
     <ClInclude Include="playerTank.h" />
     <ClInclude Include="tanksEnemy.h" />
   </ItemGroup>

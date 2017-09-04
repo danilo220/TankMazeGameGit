@@ -1,7 +1,10 @@
 #pragma once
-#include <SDL.h>
-#include <iostream>
-#include <string>
+#include "SDL.h"
+#include "SDL_image.h"
+#include "tanksEnemy.h"
+#include "playerTank.h"
+#include "Platform.h"
+#include <stdio.h>
 
 class MainGame
 {
