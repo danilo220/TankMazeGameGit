@@ -50,11 +50,12 @@ void MainGame::gameRunning()
 	//platform
 	/*Platform platform[2] = {700, 300, 10, 200};*/
 
-	Platform platform(renderer, 51, 600, 10, 200); //SDL_Renderer *renderer, int platX, int platY, int platH, int platW
-	Platform platform2(renderer, 249, 410, 200, 10);
-	Platform platform3(renderer, 700, 300, 10, 200);
-	Platform platform4(renderer, 700, 300, 200, 10);
-	Platform platform6(renderer, 700, 300, 10, 200);
+	Platform platformBY(renderer, 100, 600, 10, 1300); //SDL_Renderer *renderer, int platX, int platY, int platH, int platW
+	Platform platformTY(renderer, 249, 410, 200, 10);
+	//Platform platform3(renderer, 700, 300, 10, 200);
+	//Platform platform4(renderer, 700, 300, 200, 10);
+	/*Platform platform4(renderer, 700, 300, 200, 10);*/
+	/*Platform platform6(renderer, 700, 300, 10, 200);*/
 	/*Platform platform4(renderer, 700, 300, 200, 10);*/
 
 	
@@ -87,50 +88,37 @@ void MainGame::gameRunning()
 		tankEnemies6.drawTanks(renderer);
 
 		//draw platform
-		platform.platDraw(renderer);
-		platform2.platDraw(renderer);
+		platformBY.platDraw(renderer);
+		platformTY.platDraw(renderer);
 		//platform3.platDraw(renderer);
 		//platform4.platDraw(renderer);
 
-		//if (playerPosition.y + playerPosition.h < 50) //ceiling collision
-		//{
-		//	playerPosition.y = 50 - playerPosition.h;
-		//}
 		//playerPlatForm Collision
 		//plat1
-		SDL_bool collisionPlat1 = SDL_HasIntersection(&platform.platformRect, &player.playerPosition);
+		SDL_bool collisionPlat1 = SDL_HasIntersection(&platformBY.platformRect, &player.playerPosition);
 		if (collisionPlat1)
 		{
 			if (player.w)
 			{
-				player.playerPosition.y = platform.platformRect.y - -10;
+				player.playerPosition.y = platformBY.platformRect.y - -10;
 			}
 			if (player.s)
 			{
-				player.playerPosition.y = platform.platformRect.y - player.playerPosition.h;
+				player.playerPosition.y = platformBY.platformRect.y - player.playerPosition.h;
 			}
 		}
 
-		//if (playerPosition.x + playerPosition.w > 1500) //right wall collision D
-		//{
-		//	playerPosition.x = 1500 - playerPosition.w;
-		//}
-
-		//if (playerPosition.x < 0) //left wall colision
-		//{
-		//	playerPosition.x = 0;
-		//}
 		//plat2
-		SDL_bool collisionPlat2 = SDL_HasIntersection(&platform2.platformRect, &player.playerPosition);
+		SDL_bool collisionPlat2 = SDL_HasIntersection(&platformTY.platformRect, &player.playerPosition);
 		if (collisionPlat2)
 		{
 			if (player.a)
 			{
-				player.playerPosition.x = platform.platformRect.x - -10;
+				player.playerPosition.x = platformTY.platformRect.x - -10;
 			}
 			if (player.d)
 			{
-				player.playerPosition.x = platform.platformRect.x - player.playerPosition.w;
+				player.playerPosition.x = platformTY.platformRect.x - player.playerPosition.w;
 			}
 		}
 
@@ -138,40 +126,40 @@ void MainGame::gameRunning()
 	
 		//platform collision
 		//D
-		for (int i = 0; i < player.bulletVecD.size(); i++)
-		{
-			SDL_bool collisionTwo = SDL_HasIntersection(&platform2.platformRect, &player.bulletVecD.at(i).bulletRect);
-			if (collisionTwo)
-			{
-				/*player.dShoot = false;*/
+		//for (int i = 0; i < player.bulletVecD.size(); i++)
+		//{
+		//	SDL_bool collisionTwo = SDL_HasIntersection(&platform2.platformRect, &player.bulletVecD.at(i).bulletRect);
+		//	if (collisionTwo)
+		//	{
+		//		/*player.dShoot = false;*/
 
-				/*player.bulletVecD.at(i).bulletMoveD(0);*/
-				player.bulletVecD.at(i).~Bullet();
-				player.bulletVecD.at(i).bulletMoveD(8);
-				/*player.bulletVecD.at(i).bulletRect.x -= 100;*/
-				/*player.bulletVecWD.at(i).bulletRect.y -= 50;*/ 
-			}
-		}
+		//		/*player.bulletVecD.at(i).bulletMoveD(0);*/
+		//		player.bulletVecD.at(i).~Bullet();
+		//		player.bulletVecD.at(i).bulletMoveD(8);
+		//		/*player.bulletVecD.at(i).bulletRect.x -= 100;*/
+		//		/*player.bulletVecWD.at(i).bulletRect.y -= 50;*/ 
+		//	}
+		//}
 
-		//WD
-		for (int i = 0; i < player.bulletVecWD.size(); i++)
-		{
-			SDL_bool collisionOne = SDL_HasIntersection(&platform.platformRect, &player.bulletVecWD.at(i).bulletRect);
-			if (collisionOne)
-			{
-				/*player.bulletVecWD.at(i).bulletRect.x += 3;*/
-				player.bulletVecWD.at(i).~Bullet();
-				player.bulletVecWD.at(i).bulletRect.y += 50;
-			}
+		////WD
+		//for (int i = 0; i < player.bulletVecWD.size(); i++)
+		//{
+		//	SDL_bool collisionOne = SDL_HasIntersection(&platform.platformRect, &player.bulletVecWD.at(i).bulletRect);
+		//	if (collisionOne)
+		//	{
+		//		/*player.bulletVecWD.at(i).bulletRect.x += 3;*/
+		//		player.bulletVecWD.at(i).~Bullet();
+		//		player.bulletVecWD.at(i).bulletRect.y += 50;
+		//	}
 
-			SDL_bool collisionTwo = SDL_HasIntersection(&platform2.platformRect, &player.bulletVecWD.at(i).bulletRect);
-			if (collisionTwo)
-			{
-				player.bulletVecWD.at(i).~Bullet();
-				//player.bulletVecWD.at(i).bulletRect.x -= 50;
-				//player.bulletVecWD.at(i).bulletRect.y -= 50;
-			}
-		}
+		//	SDL_bool collisionTwo = SDL_HasIntersection(&platform2.platformRect, &player.bulletVecWD.at(i).bulletRect);
+		//	if (collisionTwo)
+		//	{
+		//		player.bulletVecWD.at(i).~Bullet();
+		//		//player.bulletVecWD.at(i).bulletRect.x -= 30;
+		//		//player.bulletVecWD.at(i).bulletRect.y -= 30;
+		//	}
+		//}
 
 		//bullet collision
 		//W collision
