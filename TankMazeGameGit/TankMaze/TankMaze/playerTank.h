@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <vector>
 #include "Bullet.h"
-
+//#include "MainGame.h"
 class playerTank
 {
 public:
@@ -27,6 +27,15 @@ public:
 	std::vector<Bullet> bulletVecSA;
 	std::vector<Bullet> bulletVecWA;
 
+	bool sdShoot = false;
+	bool saShoot = false;
+	bool dShoot = false;
+
+	bool d;
+	bool s;
+	bool a;
+	bool w;
+
 private:
 	SDL_Texture *texture;
 	SDL_Rect windowRect;
@@ -34,11 +43,7 @@ private:
 	SDL_RendererFlip flipType;
 	SDL_Point* center = NULL;
 	double angle = 0.0;
-	bool d;
-	bool s;
-	bool a;
-	bool w;
-	bool dShoot = false;
+	//bool dShoot = false;
 	bool sShoot = false;
 	bool aShoot = false;
 	bool wShoot = false;
@@ -57,8 +62,8 @@ private:
 	bool xPos = false;
 	bool yPos = false;
 	bool wdShoot = false;
-	bool sdShoot = false;
-	bool saShoot = false;
+	/*bool sdShoot = false;*/
+	//bool saShoot = false;
 	bool waShoot = false;
 };
 

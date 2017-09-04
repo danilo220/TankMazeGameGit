@@ -12,6 +12,7 @@ public:
 	MainGame();
 	~MainGame();
 	void runGame();
+	bool dShootmain = false;
 
 private:
 	SDL_Window *window;

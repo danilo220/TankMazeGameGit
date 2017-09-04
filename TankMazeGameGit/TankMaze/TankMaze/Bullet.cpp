@@ -13,6 +13,12 @@ Bullet::Bullet(int bulletH, int bulletW)
 
 Bullet::~Bullet()
 {
+	bulletRect.x = NULL;
+	bulletRect.y = NULL;
+	bulletRect.h = NULL;
+	bulletRect.w = NULL;
+
+	//SDL_RenderClear(renderer);
 }
 
 void Bullet::bulletPosition(int bulletX, int bulletY, bool xPos, bool yPos)
