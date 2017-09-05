@@ -50,8 +50,20 @@ void MainGame::gameRunning()
 	//platform
 	/*Platform platform[2] = {700, 300, 10, 200};*/
 
-	Platform platformBY(renderer, 100, 600, 10, 1300); //SDL_Renderer *renderer, int platX, int platY, int platH, int platW
-	Platform platformTY(renderer, 249, 410, 200, 10);
+	//bottom ones
+	Platform platformBYL(renderer, 100, 630, 10, 600); //SDL_Renderer *renderer, int platX, int platY, int platH, int platW
+	Platform platformBYR(renderer, 800, 630, 10, 600);
+	Platform platformBXL(renderer, 100, 430, 200, 10);
+	Platform platformBXR(renderer, 1400, 430, 210, 10);
+
+	//top one
+	Platform platformTYL(renderer, 100, 150, 10, 600);
+	Platform platformTYR(renderer, 800, 150, 10, 600);
+	Platform platformTXL(renderer, 100, 150, 200, 10);
+	Platform platformTXR(renderer, 1400, 150, 200, 10);
+
+	//
+
 	//Platform platform3(renderer, 700, 300, 10, 200);
 	//Platform platform4(renderer, 700, 300, 200, 10);
 	/*Platform platform4(renderer, 700, 300, 200, 10);*/
@@ -88,39 +100,45 @@ void MainGame::gameRunning()
 		tankEnemies6.drawTanks(renderer);
 
 		//draw platform
-		platformBY.platDraw(renderer);
-		platformTY.platDraw(renderer);
+		platformBYL.platDraw(renderer);
+		platformTYL.platDraw(renderer);
+		platformBXL.platDraw(renderer);
+		platformTXL.platDraw(renderer);
+		platformTXR.platDraw(renderer);
+		platformBXR.platDraw(renderer);
+		platformBYR.platDraw(renderer);
+		platformTYR.platDraw(renderer);
 		//platform3.platDraw(renderer);
 		//platform4.platDraw(renderer);
 
 		//playerPlatForm Collision
 		//plat1
-		SDL_bool collisionPlat1 = SDL_HasIntersection(&platformBY.platformRect, &player.playerPosition);
-		if (collisionPlat1)
-		{
-			if (player.w)
-			{
-				player.playerPosition.y = platformBY.platformRect.y - -10;
-			}
-			if (player.s)
-			{
-				player.playerPosition.y = platformBY.platformRect.y - player.playerPosition.h;
-			}
-		}
+		//SDL_bool collisionPlat1 = SDL_HasIntersection(&platformBY.platformRect, &player.playerPosition);
+		//if (collisionPlat1)
+		//{
+		//	if (player.w)
+		//	{
+		//		player.playerPosition.y = platformBY.platformRect.y - -10;
+		//	}
+		//	if (player.s)
+		//	{
+		//		player.playerPosition.y = platformBY.platformRect.y - player.playerPosition.h;
+		//	}
+		//}
 
-		//plat2
-		SDL_bool collisionPlat2 = SDL_HasIntersection(&platformTY.platformRect, &player.playerPosition);
-		if (collisionPlat2)
-		{
-			if (player.a)
-			{
-				player.playerPosition.x = platformTY.platformRect.x - -10;
-			}
-			if (player.d)
-			{
-				player.playerPosition.x = platformTY.platformRect.x - player.playerPosition.w;
-			}
-		}
+		////plat2
+		//SDL_bool collisionPlat2 = SDL_HasIntersection(&platformTY.platformRect, &player.playerPosition);
+		//if (collisionPlat2)
+		//{
+		//	if (player.a)
+		//	{
+		//		player.playerPosition.x = platformTY.platformRect.x - -10;
+		//	}
+		//	if (player.d)
+		//	{
+		//		player.playerPosition.x = platformTY.platformRect.x - player.playerPosition.w;
+		//	}
+		//}
 
 
 	
