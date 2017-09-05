@@ -242,6 +242,26 @@ void MainGame::gameRunning()
 			}
 		}
 
+		//W with all
+		//SDL_bool CplatformBYL = SDL_HasIntersection(&platformBYL.platformRect, &player.playerPosition);
+		//SDL_bool CplatformBYR = SDL_HasIntersection(&platformBYR.platformRect, &player.playerPosition);
+		//SDL_bool CplatformTYL = SDL_HasIntersection(&platformTYL.platformRect, &player.playerPosition);
+		//SDL_bool CplatformTYR = SDL_HasIntersection(&platformTYR.platformRect, &player.playerPosition);
+		//SDL_bool CplatformCY = SDL_HasIntersection(&platformCY.platformRect, &player.playerPosition);
+
+		for (int i = 0; i < player.bulletVecW.size(); i++)
+		{
+			SDL_bool WplatformBYL = SDL_HasIntersection(&platformBYL.platformRect, &player.bulletVecW.at(i).bulletRect);
+			SDL_bool WplatformBYR = SDL_HasIntersection(&platformBYR.platformRect, &player.bulletVecW.at(i).bulletRect);
+			SDL_bool WplatformTYL = SDL_HasIntersection(&platformTYL.platformRect, &player.bulletVecW.at(i).bulletRect);
+			SDL_bool WplatformTYR = SDL_HasIntersection(&platformTYR.platformRect, &player.bulletVecW.at(i).bulletRect);
+			SDL_bool WplatformCY = SDL_HasIntersection(&platformCY.platformRect, &player.bulletVecW.at(i).bulletRect);
+			if (WplatformBYL || WplatformBYR || WplatformTYL || WplatformTYR || WplatformCY)
+			{
+				player.bulletVecW.at(i).~Bullet();
+			}
+		}
+
 		////WD
 		//for (int i = 0; i < player.bulletVecWD.size(); i++)
 		//{
