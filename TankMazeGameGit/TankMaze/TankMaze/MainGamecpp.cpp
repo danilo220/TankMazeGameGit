@@ -105,17 +105,6 @@ void MainGame::gameRunning()
 		platformCL.platDraw(renderer);
 		platformCR.platDraw(renderer);
 
-
-		//Platform platformBYL(renderer, 100, 630, 10, 600); //SDL_Renderer *renderer, int platX, int platY, int platH, int platW
-		//Platform platformBYR(renderer, 800, 630, 10, 600);
-		//Platform platformBXL(renderer, 100, 430, 200, 10);
-		//Platform platformBXR(renderer, 1400, 430, 210, 10);
-
-		//Platform platformTYL(renderer, 100, 150, 10, 580);
-		//Platform platformTYR(renderer, 820, 150, 10, 580);
-		//Platform platformTXL(renderer, 100, 150, 180, 10);
-		//Platform platformTXR(renderer, 1400, 150, 180, 10);
-
 		//player platForm Collision
 		
 		//Y Ones
@@ -123,8 +112,9 @@ void MainGame::gameRunning()
 		SDL_bool CplatformBYR = SDL_HasIntersection(&platformBYR.platformRect, &player.playerPosition);
 		SDL_bool CplatformTYL = SDL_HasIntersection(&platformTYL.platformRect, &player.playerPosition);
 		SDL_bool CplatformTYR = SDL_HasIntersection(&platformTYR.platformRect, &player.playerPosition);
+		SDL_bool CplatformCY = SDL_HasIntersection(&platformCY.platformRect, &player.playerPosition);
 
-		if (CplatformBYL || CplatformBYR || CplatformTYL || CplatformTYR)
+		if (CplatformBYL || CplatformBYR || CplatformTYL || CplatformTYR || CplatformCY)
 		{
 			//bottom W
 			if (player.w && (CplatformBYL || CplatformBYR))
@@ -146,21 +136,30 @@ void MainGame::gameRunning()
 			{
 				player.playerPosition.y = platformTYL.platformRect.y - player.playerPosition.h;
 			}
+			//center w
+			if (player.w && CplatformCY)
+			{
+				player.playerPosition.y = platformCY.platformRect.y - -10;
+			}
+			//center s
+			if (player.s && CplatformCY)
+			{
+				player.playerPosition.y = platformCY.platformRect.y - player.playerPosition.h;
+			}
 		}
 
+		//Platform platformCY(renderer, 650, 500, 10, 150);
+		//Platform platformCL(renderer, 650, 350, 150, 10);
+		//Platform platformCR(renderer, 800, 350, 160, 10);
 		//X ones
 		SDL_bool CplatformBXL = SDL_HasIntersection(&platformBXL.platformRect, &player.playerPosition);
 		SDL_bool CplatformBXR = SDL_HasIntersection(&platformBXR.platformRect, &player.playerPosition);
 		SDL_bool CplatformTXL = SDL_HasIntersection(&platformTXL.platformRect, &player.playerPosition);
 		SDL_bool CplatformTXR = SDL_HasIntersection(&platformTXR.platformRect, &player.playerPosition);
-		//if (CplatformBYL || CplatformBYR || CplatformTYL || CplatformTYR)
-		//{
-		//	//bottom W
-		//	if (player.w && (CplatformBYL || CplatformBYR))
-		//	{
-		//		player.playerPosition.y = platformBYR.platformRect.y - -10;
-		//	}
-		if (CplatformBXL || CplatformBXR || CplatformTXL || CplatformTXR)
+		SDL_bool CplatformCL = SDL_HasIntersection(&platformCL.platformRect, &player.playerPosition);
+		SDL_bool CplatformCR = SDL_HasIntersection(&platformCR.platformRect, &player.playerPosition);
+
+		if (CplatformBXL || CplatformBXR || CplatformTXL || CplatformTXR || CplatformCL || CplatformCR)
 		{
 			//left bottom and top a
 			if (player.a && (CplatformBXL || CplatformTXL))
@@ -184,8 +183,26 @@ void MainGame::gameRunning()
 			{
 				player.playerPosition.x = platformBXR.platformRect.x - player.playerPosition.w;
 			}
-
-
+			//right center d
+			if (player.d && CplatformCR)
+			{
+				player.playerPosition.x = platformCR.platformRect.x - player.playerPosition.w;
+			}
+			//right center d
+			if (player.a && CplatformCR)
+			{
+				player.playerPosition.x = platformCR.platformRect.x - -10;
+			}
+			//left center d
+			if (player.d && CplatformCL)
+			{
+				player.playerPosition.x = platformCL.platformRect.x - player.playerPosition.w;
+			}
+			//left center a
+			if (player.a && CplatformCL)
+			{
+				player.playerPosition.x = platformCL.platformRect.x - -10;
+			}
 		}
 
 		//bullet platform collision
