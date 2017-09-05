@@ -48,33 +48,23 @@ void MainGame::gameRunning()
 	playerTank player(renderer, 0, 720, 50, 50, "playerTank.png");
 
 	//platform
-	/*Platform platform[2] = {700, 300, 10, 200};*/
-
 	//bottom ones
-	Platform platformBYL(renderer, 100, 630, 10, 600); //SDL_Renderer *renderer, int platX, int platY, int platH, int platW
-	Platform platformBYR(renderer, 800, 630, 10, 600);
-	Platform platformBXL(renderer, 100, 430, 200, 10);
-	Platform platformBXR(renderer, 1400, 430, 210, 10);
+	Platform platformBYL(renderer, 100, 630, 10, 580); //SDL_Renderer *renderer, int platX, int platY, int platH, int platW
+	Platform platformBYR(renderer, 820, 630, 10, 580);
+	Platform platformBXL(renderer, 100, 450, 180, 10);
+	Platform platformBXR(renderer, 1400, 450, 190, 10);
 
 	//top one
-	Platform platformTYL(renderer, 100, 150, 10, 600);
-	Platform platformTYR(renderer, 800, 150, 10, 600);
-	Platform platformTXL(renderer, 100, 150, 200, 10);
-	Platform platformTXR(renderer, 1400, 150, 200, 10);
+	Platform platformTYL(renderer, 100, 150, 10, 580);
+	Platform platformTYR(renderer, 820, 150, 10, 580);
+	Platform platformTXL(renderer, 100, 150, 180, 10);
+	Platform platformTXR(renderer, 1400, 150, 180, 10);
 
 	//center one
 	Platform platformCY(renderer, 650, 500, 10, 150);
 	Platform platformCL(renderer, 650, 350, 150, 10);
 	Platform platformCR(renderer, 800, 350, 160, 10);
-
-	//Platform platform3(renderer, 700, 300, 10, 200);
-	//Platform platform4(renderer, 700, 300, 200, 10);
-	/*Platform platform4(renderer, 700, 300, 200, 10);*/
-	/*Platform platform6(renderer, 700, 300, 10, 200);*/
-	/*Platform platform4(renderer, 700, 300, 200, 10);*/
-
 	
-	//Bullet bullets(NULL, NULL);
 	bool running = true;
 	while (running)
 	{
@@ -114,10 +104,51 @@ void MainGame::gameRunning()
 		platformCY.platDraw(renderer);
 		platformCL.platDraw(renderer);
 		platformCR.platDraw(renderer);
-		//platform3.platDraw(renderer);
-		//platform4.platDraw(renderer);
+
+
+		//Platform platformBYL(renderer, 100, 630, 10, 600); //SDL_Renderer *renderer, int platX, int platY, int platH, int platW
+		//Platform platformBYR(renderer, 800, 630, 10, 600);
+		//Platform platformBXL(renderer, 100, 430, 200, 10);
+		//Platform platformBXR(renderer, 1400, 430, 210, 10);
+
+		//Platform platformTYL(renderer, 100, 150, 10, 580);
+		//Platform platformTYR(renderer, 820, 150, 10, 580);
+		//Platform platformTXL(renderer, 100, 150, 180, 10);
+		//Platform platformTXR(renderer, 1400, 150, 180, 10);
 
 		//playerPlatForm Collision
+		
+		//Y Ones
+		SDL_bool CplatformBYL = SDL_HasIntersection(&platformBYL.platformRect, &player.playerPosition);
+		SDL_bool CplatformBYR = SDL_HasIntersection(&platformBYR.platformRect, &player.playerPosition);
+		SDL_bool CplatformTYL = SDL_HasIntersection(&platformTYL.platformRect, &player.playerPosition);
+		SDL_bool CplatformTYR = SDL_HasIntersection(&platformTYR.platformRect, &player.playerPosition);
+
+		if (CplatformBYL || CplatformBYR || CplatformTYL || CplatformTYR)
+		{
+			//bottom W
+			if (player.w && (CplatformBYL || CplatformBYR))
+			{
+				player.playerPosition.y = platformBYR.platformRect.y - -10;
+			}
+			//botton S
+			if (player.s && (CplatformBYL || CplatformBYR))
+			{
+				player.playerPosition.y = platformBYL.platformRect.y - player.playerPosition.h;
+			}
+			//top W
+			if (player.w && (CplatformTYL || CplatformTYR))
+			{
+				player.playerPosition.y = platformTYL.platformRect.y - -10;
+			}
+			//top S
+			if (player.s && (CplatformTYL || CplatformTYR))
+			{
+				player.playerPosition.y = platformTYL.platformRect.y - player.playerPosition.h;
+			}
+		}
+
+
 		//plat1
 		//SDL_bool collisionPlat1 = SDL_HasIntersection(&platformBY.platformRect, &player.playerPosition);
 		//if (collisionPlat1)
