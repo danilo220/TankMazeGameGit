@@ -187,38 +187,26 @@ void MainGame::gameRunning()
 
 
 		}
-		////plat2
-		//SDL_bool collisionPlat2 = SDL_HasIntersection(&platformTY.platformRect, &player.playerPosition);
-		//if (collisionPlat2)
-		//{
-		//	if (player.a)
-		//	{
-		//		player.playerPosition.x = platformTY.platformRect.x - -10;
-		//	}
-		//	if (player.d)
-		//	{
-		//		player.playerPosition.x = platformTY.platformRect.x - player.playerPosition.w;
-		//	}
-		//}
 
+		//bullet platform collision
 
-	
-		//platform collision
-		//D
-		//for (int i = 0; i < player.bulletVecD.size(); i++)
-		//{
-		//	SDL_bool collisionTwo = SDL_HasIntersection(&platform2.platformRect, &player.bulletVecD.at(i).bulletRect);
-		//	if (collisionTwo)
-		//	{
-		//		/*player.dShoot = false;*/
-
-		//		/*player.bulletVecD.at(i).bulletMoveD(0);*/
-		//		player.bulletVecD.at(i).~Bullet();
-		//		player.bulletVecD.at(i).bulletMoveD(8);
-		//		/*player.bulletVecD.at(i).bulletRect.x -= 100;*/
-		//		/*player.bulletVecWD.at(i).bulletRect.y -= 50;*/ 
-		//	}
-		//}
+		//D with all X
+		for (int i = 0; i < player.bulletVecD.size(); i++)
+		{
+			SDL_bool DplatformBXR = SDL_HasIntersection(&platformBXR.platformRect, &player.bulletVecD.at(i).bulletRect);
+			SDL_bool DplatformTXR = SDL_HasIntersection(&platformTXR.platformRect, &player.bulletVecD.at(i).bulletRect);
+			SDL_bool DplatformTXL = SDL_HasIntersection(&platformTXL.platformRect, &player.bulletVecD.at(i).bulletRect);
+			SDL_bool DplatformBXL = SDL_HasIntersection(&platformBXL.platformRect, &player.bulletVecD.at(i).bulletRect);
+			if (DplatformBXR || DplatformTXR || DplatformTXL || DplatformBXL)
+			{
+				/*player.dShoot = false;*/
+				/*player.bulletVecD.at(i).bulletMoveD(0);*/
+				player.bulletVecD.at(i).~Bullet();
+				player.bulletVecD.at(i).bulletMoveD(8);
+				/*player.bulletVecD.at(i).bulletRect.x -= 100;*/
+				/*player.bulletVecWD.at(i).bulletRect.y -= 50;*/ 
+			}
+		}
 
 		////WD
 		//for (int i = 0; i < player.bulletVecWD.size(); i++)
@@ -471,7 +459,7 @@ void MainGame::gameRunning()
 				tankEnemies6.~tanksEnemy();
 			}
 		}
-
+		//SA collision
 		for (int i = 0; i < player.bulletVecSA.size(); i++)
 		{
 			SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &player.bulletVecSA.at(i).bulletRect);
@@ -509,6 +497,7 @@ void MainGame::gameRunning()
 			}
 		}
 
+		//SD collision
 		for (int i = 0; i < player.bulletVecSD.size(); i++)
 		{
 			SDL_bool collisionOne = SDL_HasIntersection(&tankEnemies.enemyTanksRectPosition, &player.bulletVecSD.at(i).bulletRect);
