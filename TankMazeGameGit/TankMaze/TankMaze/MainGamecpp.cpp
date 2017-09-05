@@ -214,14 +214,31 @@ void MainGame::gameRunning()
 			SDL_bool DplatformTXR = SDL_HasIntersection(&platformTXR.platformRect, &player.bulletVecD.at(i).bulletRect);
 			SDL_bool DplatformTXL = SDL_HasIntersection(&platformTXL.platformRect, &player.bulletVecD.at(i).bulletRect);
 			SDL_bool DplatformBXL = SDL_HasIntersection(&platformBXL.platformRect, &player.bulletVecD.at(i).bulletRect);
-			if (DplatformBXR || DplatformTXR || DplatformTXL || DplatformBXL)
+			SDL_bool DplatformCL = SDL_HasIntersection(&platformCL.platformRect, &player.bulletVecD.at(i).bulletRect);
+			SDL_bool DplatformCR = SDL_HasIntersection(&platformCR.platformRect, &player.bulletVecD.at(i).bulletRect);
+			if (DplatformBXR || DplatformTXR || DplatformTXL || DplatformBXL || DplatformCL || DplatformCR)
 			{
 				/*player.dShoot = false;*/
 				/*player.bulletVecD.at(i).bulletMoveD(0);*/
 				player.bulletVecD.at(i).~Bullet();
-				player.bulletVecD.at(i).bulletMoveD(8);
+				/*player.bulletVecD.at(i).bulletMoveD(8);*/
 				/*player.bulletVecD.at(i).bulletRect.x -= 100;*/
 				/*player.bulletVecWD.at(i).bulletRect.y -= 50;*/ 
+			}
+		}
+
+		//A with all X
+		for (int i = 0; i < player.bulletVecA.size(); i++)
+		{
+			SDL_bool AplatformBXR = SDL_HasIntersection(&platformBXR.platformRect, &player.bulletVecA.at(i).bulletRect);
+			SDL_bool AplatformTXR = SDL_HasIntersection(&platformTXR.platformRect, &player.bulletVecA.at(i).bulletRect);
+			SDL_bool AplatformTXL = SDL_HasIntersection(&platformTXL.platformRect, &player.bulletVecA.at(i).bulletRect);
+			SDL_bool AplatformBXL = SDL_HasIntersection(&platformBXL.platformRect, &player.bulletVecA.at(i).bulletRect);
+			SDL_bool AplatformCL = SDL_HasIntersection(&platformCL.platformRect, &player.bulletVecA.at(i).bulletRect);
+			SDL_bool AplatformCR = SDL_HasIntersection(&platformCR.platformRect, &player.bulletVecA.at(i).bulletRect);
+			if (AplatformBXR || AplatformTXR || AplatformTXL || AplatformBXL || AplatformCL || AplatformCR)
+			{
+				player.bulletVecA.at(i).~Bullet();
 			}
 		}
 

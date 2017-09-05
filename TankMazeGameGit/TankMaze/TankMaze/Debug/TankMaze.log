@@ -1,12 +1,13 @@
 ﻿  MainGamecpp.cpp
 c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(211): warning C4018: '<': signed/unsigned mismatch
-c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(250): warning C4018: '<': signed/unsigned mismatch
-c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(290): warning C4018: '<': signed/unsigned mismatch
-c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(328): warning C4018: '<': signed/unsigned mismatch
-c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(366): warning C4018: '<': signed/unsigned mismatch
-c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(404): warning C4018: '<': signed/unsigned mismatch
-c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(443): warning C4018: '<': signed/unsigned mismatch
-c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(480): warning C4018: '<': signed/unsigned mismatch
-c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(518): warning C4018: '<': signed/unsigned mismatch
+c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(232): warning C4018: '<': signed/unsigned mismatch
+c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(268): warning C4018: '<': signed/unsigned mismatch
+c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(308): warning C4018: '<': signed/unsigned mismatch
+c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(346): warning C4018: '<': signed/unsigned mismatch
+c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(384): warning C4018: '<': signed/unsigned mismatch
+c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(422): warning C4018: '<': signed/unsigned mismatch
+c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(461): warning C4018: '<': signed/unsigned mismatch
+c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(498): warning C4018: '<': signed/unsigned mismatch
+c:\users\danilo\desktop\tankmazegame\tankmazegamegit\tankmaze\tankmaze\maingamecpp.cpp(536): warning C4018: '<': signed/unsigned mismatch
   TankMaze.vcxproj -> C:\Users\Danilo\Desktop\TankMazeGame\TankMazeGameGit\TankMaze\Debug\TankMaze.exe
   TankMaze.vcxproj -> C:\Users\Danilo\Desktop\TankMazeGame\TankMazeGameGit\TankMaze\Debug\TankMaze.pdb (Partial PDB)
