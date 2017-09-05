@@ -243,12 +243,6 @@ void MainGame::gameRunning()
 		}
 
 		//W with all
-		//SDL_bool CplatformBYL = SDL_HasIntersection(&platformBYL.platformRect, &player.playerPosition);
-		//SDL_bool CplatformBYR = SDL_HasIntersection(&platformBYR.platformRect, &player.playerPosition);
-		//SDL_bool CplatformTYL = SDL_HasIntersection(&platformTYL.platformRect, &player.playerPosition);
-		//SDL_bool CplatformTYR = SDL_HasIntersection(&platformTYR.platformRect, &player.playerPosition);
-		//SDL_bool CplatformCY = SDL_HasIntersection(&platformCY.platformRect, &player.playerPosition);
-
 		for (int i = 0; i < player.bulletVecW.size(); i++)
 		{
 			SDL_bool WplatformBYL = SDL_HasIntersection(&platformBYL.platformRect, &player.bulletVecW.at(i).bulletRect);
@@ -261,7 +255,40 @@ void MainGame::gameRunning()
 				player.bulletVecW.at(i).~Bullet();
 			}
 		}
+		//S with all
+		for (int i = 0; i < player.bulletVecS.size(); i++)
+		{
+			SDL_bool SplatformBYL = SDL_HasIntersection(&platformBYL.platformRect, &player.bulletVecS.at(i).bulletRect);
+			SDL_bool SplatformBYR = SDL_HasIntersection(&platformBYR.platformRect, &player.bulletVecS.at(i).bulletRect);
+			SDL_bool SplatformTYL = SDL_HasIntersection(&platformTYL.platformRect, &player.bulletVecS.at(i).bulletRect);
+			SDL_bool SplatformTYR = SDL_HasIntersection(&platformTYR.platformRect, &player.bulletVecS.at(i).bulletRect);
+			SDL_bool SplatformCY = SDL_HasIntersection(&platformCY.platformRect, &player.bulletVecS.at(i).bulletRect);
+			if (SplatformBYL || SplatformBYR || SplatformTYL || SplatformTYR || SplatformCY)
+			{
+				player.bulletVecS.at(i).~Bullet();
+			}
+		}
+		//WD with all
+		for (int i = 0; i < player.bulletVecWD.size(); i++)
+		{
+			SDL_bool WDplatformBYL = SDL_HasIntersection(&platformBYL.platformRect, &player.bulletVecWD.at(i).bulletRect);
+			SDL_bool WDplatformBYR = SDL_HasIntersection(&platformBYR.platformRect, &player.bulletVecWD.at(i).bulletRect);
+			SDL_bool WDplatformTYL = SDL_HasIntersection(&platformTYL.platformRect, &player.bulletVecWD.at(i).bulletRect);
+			SDL_bool WDplatformTYR = SDL_HasIntersection(&platformTYR.platformRect, &player.bulletVecWD.at(i).bulletRect);
+			SDL_bool WDplatformCY = SDL_HasIntersection(&platformCY.platformRect, &player.bulletVecWD.at(i).bulletRect);
 
+			SDL_bool WDplatformBXR = SDL_HasIntersection(&platformBXR.platformRect, &player.bulletVecWD.at(i).bulletRect);
+			SDL_bool WDplatformTXR = SDL_HasIntersection(&platformTXR.platformRect, &player.bulletVecWD.at(i).bulletRect);
+			SDL_bool WDplatformTXL = SDL_HasIntersection(&platformTXL.platformRect, &player.bulletVecWD.at(i).bulletRect);
+			SDL_bool WDplatformBXL = SDL_HasIntersection(&platformBXL.platformRect, &player.bulletVecWD.at(i).bulletRect);
+			SDL_bool WDplatformCL = SDL_HasIntersection(&platformCL.platformRect, &player.bulletVecWD.at(i).bulletRect);
+			SDL_bool WDplatformCR = SDL_HasIntersection(&platformCR.platformRect, &player.bulletVecWD.at(i).bulletRect);
+			if (WDplatformBYL || WDplatformBYR || WDplatformTYL || WDplatformTYR || WDplatformCY || 
+				WDplatformBXR || WDplatformTXR || WDplatformTXL || WDplatformBXL || WDplatformCL || WDplatformCR)
+			{
+				player.bulletVecWD.at(i).~Bullet();
+			}
+		}
 		////WD
 		//for (int i = 0; i < player.bulletVecWD.size(); i++)
 		//{
