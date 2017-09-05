@@ -116,7 +116,7 @@ void MainGame::gameRunning()
 		//Platform platformTXL(renderer, 100, 150, 180, 10);
 		//Platform platformTXR(renderer, 1400, 150, 180, 10);
 
-		//playerPlatForm Collision
+		//player platForm Collision
 		
 		//Y Ones
 		SDL_bool CplatformBYL = SDL_HasIntersection(&platformBYL.platformRect, &player.playerPosition);
@@ -148,21 +148,45 @@ void MainGame::gameRunning()
 			}
 		}
 
-
-		//plat1
-		//SDL_bool collisionPlat1 = SDL_HasIntersection(&platformBY.platformRect, &player.playerPosition);
-		//if (collisionPlat1)
+		//X ones
+		SDL_bool CplatformBXL = SDL_HasIntersection(&platformBXL.platformRect, &player.playerPosition);
+		SDL_bool CplatformBXR = SDL_HasIntersection(&platformBXR.platformRect, &player.playerPosition);
+		SDL_bool CplatformTXL = SDL_HasIntersection(&platformTXL.platformRect, &player.playerPosition);
+		SDL_bool CplatformTXR = SDL_HasIntersection(&platformTXR.platformRect, &player.playerPosition);
+		//if (CplatformBYL || CplatformBYR || CplatformTYL || CplatformTYR)
 		//{
-		//	if (player.w)
+		//	//bottom W
+		//	if (player.w && (CplatformBYL || CplatformBYR))
 		//	{
-		//		player.playerPosition.y = platformBY.platformRect.y - -10;
+		//		player.playerPosition.y = platformBYR.platformRect.y - -10;
 		//	}
-		//	if (player.s)
-		//	{
-		//		player.playerPosition.y = platformBY.platformRect.y - player.playerPosition.h;
-		//	}
-		//}
+		if (CplatformBXL || CplatformBXR || CplatformTXL || CplatformTXR)
+		{
+			//left bottom and top a
+			if (player.a && (CplatformBXL || CplatformTXL))
+			{
+				player.playerPosition.x = platformBXL.platformRect.x - -10;
+			}
+			//left bottom and top d
+			if (player.d && (CplatformBXL || CplatformTXL))
+			{
+				player.playerPosition.x = platformBXL.platformRect.x - player.playerPosition.w;
+			}
 
+			//right bottom and top a
+			if (player.a && (CplatformBXR || CplatformTXR))
+			{
+				player.playerPosition.x = platformBXR.platformRect.x - -10;
+			}
+
+			//right bottom and top d
+			if (player.d && (CplatformBXR || CplatformTXR))
+			{
+				player.playerPosition.x = platformBXR.platformRect.x - player.playerPosition.w;
+			}
+
+
+		}
 		////plat2
 		//SDL_bool collisionPlat2 = SDL_HasIntersection(&platformTY.platformRect, &player.playerPosition);
 		//if (collisionPlat2)
