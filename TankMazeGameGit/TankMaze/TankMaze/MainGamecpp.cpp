@@ -62,7 +62,10 @@ void MainGame::gameRunning()
 	Platform platformTXL(renderer, 100, 150, 200, 10);
 	Platform platformTXR(renderer, 1400, 150, 200, 10);
 
-	//
+	//center one
+	Platform platformCY(renderer, 650, 500, 10, 150);
+	Platform platformCL(renderer, 650, 350, 150, 10);
+	Platform platformCR(renderer, 800, 350, 160, 10);
 
 	//Platform platform3(renderer, 700, 300, 10, 200);
 	//Platform platform4(renderer, 700, 300, 200, 10);
@@ -108,6 +111,9 @@ void MainGame::gameRunning()
 		platformBXR.platDraw(renderer);
 		platformBYR.platDraw(renderer);
 		platformTYR.platDraw(renderer);
+		platformCY.platDraw(renderer);
+		platformCL.platDraw(renderer);
+		platformCR.platDraw(renderer);
 		//platform3.platDraw(renderer);
 		//platform4.platDraw(renderer);
 
